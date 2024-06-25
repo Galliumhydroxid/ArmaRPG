@@ -32,7 +32,7 @@ public class VisibilityManager : MonoBehaviour
         visibleGameObjects = visibleEntities;
     }
 
-    List<GameObject> entitiesInRadius()
+    private List<GameObject> entitiesInRadius()
     {
         List<GameObject> objectsInRadius = new List<GameObject>();
         var targets = Physics.OverlapSphere(gameObject.transform.position, visibilityRadius);
@@ -47,12 +47,12 @@ public class VisibilityManager : MonoBehaviour
         return objectsInRadius;
     }
 
-    bool isVisible(GameObject obj)
+    private bool isVisible(GameObject obj)
     {
         return isInVisCone(obj) && !isOccluded(obj);
     }
 
-    bool isOccluded(GameObject obj)
+    private bool isOccluded(GameObject obj)
     {
         // TODO: exclude npc layer
         int mask = 0;
@@ -62,7 +62,7 @@ public class VisibilityManager : MonoBehaviour
             mask);
     }
 
-    bool isInVisCone(GameObject obj)
+    private bool isInVisCone(GameObject obj)
     {
         float angle = Vector3.Angle(obj.transform.forward, gameObject.transform.forward);
         return angle <= visibilityConeAngle;
