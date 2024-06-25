@@ -7,8 +7,7 @@ public class VisibilityManager : MonoBehaviour
 {
     public float visibilityRadius = 5.0f;
     public float visibilityConeAngle = 45.0f;
-    public string npcTag = "HERD";
-    public List<GameObject> visibleGameObjects;
+    private List<GameObject> visibleGameObjects;
     
     // Start is called before the first frame update
     void Start()
@@ -16,6 +15,25 @@ public class VisibilityManager : MonoBehaviour
         visibleGameObjects = new List<GameObject>();
     }
 
+    public List<GameObject> getVisibleObjectsByTag(string tag)
+    {
+        List<GameObject> ret = new List<GameObject>();
+        foreach (var obj in visibleGameObjects)
+        {
+            if (obj.CompareTag(tag))
+            {
+                ret.Append(obj);
+            }
+        }
+
+        return ret;
+    }
+    
+    public List<GameObject> getVisibleObjects()
+    {
+        return visibleGameObjects;
+    }
+    
     // Update is called once per frame
     void Update()
     {
@@ -38,10 +56,7 @@ public class VisibilityManager : MonoBehaviour
         var targets = Physics.OverlapSphere(gameObject.transform.position, visibilityRadius);
         foreach (var collider in targets)
         {
-            if (collider.CompareTag(npcTag))
-            {
-                objectsInRadius.Append(collider.gameObject);
-            }
+            objectsInRadius.Append(collider.gameObject);
         }
 
         return objectsInRadius;
