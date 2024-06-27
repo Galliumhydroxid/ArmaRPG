@@ -47,12 +47,19 @@
   <ItemGroup>
     <Compile Include="Assets/State/State.cs" />
     <Compile Include="Assets/FollowPlayer.cs" />
+    <Compile Include="Assets/HerdBehaviour.cs" />
     <Compile Include="Assets/State/StateMachine.cs" />
+    <Compile Include="Assets/Flocking/Hunt.cs" />
     <Compile Include="Assets/PushBehavior.cs" />
     <Compile Include="Assets/MoveTo.cs" />
     <Compile Include="Assets/PlayerControll.cs" />
     <Compile Include="Assets/Navigation/NavigateGoalState.cs" />
+    <Compile Include="Assets/FlockingBaseComponent.cs" />
+    <Compile Include="Assets/Flocking/Flock.cs" />
     <Compile Include="Assets/Navigation/NavigateGoalParameters.cs" />
+    <Compile Include="Assets/HerdSpawner.cs" />
+    <Compile Include="Assets/VisibilityManager.cs" />
+    <Compile Include="Assets/Flocking/Wander.cs" />
     <Reference Include="UnityEngine">
       <HintPath>/home/gallium/Unity/Hub/Editor/2022.3.30f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

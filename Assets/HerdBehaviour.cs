@@ -7,14 +7,15 @@ namespace DefaultNamespace
     {
         public FlockingBaseComponent baseComponent;
         public NavMeshAgent agent;
+        private float velMod;
         void Start()
         {
+            velMod = Random.Range(0.5f, 1.5f);
         }
 
         void Update()
         {
-            Debug.Log(baseComponent.FlockingVector);
-            agent.velocity = baseComponent.FlockingVector;
+            agent.velocity = baseComponent.FlockingVector * velMod;
         }
     }
 }

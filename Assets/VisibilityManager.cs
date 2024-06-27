@@ -68,17 +68,23 @@ public class VisibilityManager : MonoBehaviour
 
     private bool isVisible(GameObject obj)
     {
-        return isInVisCone(obj);// && !isOccluded(obj);
+        return isInVisCone(obj) && !isOccluded(obj);
     }
 
     private bool isOccluded(GameObject obj)
     {
         // TODO: exclude npc layer
         int mask = 0;
-        mask = ~mask;
+        //mask = ~mask;
         Vector3 diff = obj.transform.position - gameObject.transform.position;
-        return Physics.Raycast(gameObject.transform.position, transform.TransformDirection(diff), visibilityRadius,
-            mask);
+        if (Physics.Raycast(gameObject.transform.position, transform.TransformDirection(diff), visibilityRadius,
+                mask))
+        {
+            Debug.DrawRay(gameObject.transform.position, transform.TransformDirection(diff)*visibilityRadius, Color.blue);
+            return true;
+        }
+
+        return false;
     }
 
     private bool isInVisCone(GameObject obj)

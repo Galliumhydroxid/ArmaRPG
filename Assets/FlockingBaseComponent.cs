@@ -24,13 +24,13 @@ public class FlockingBaseComponent : MonoBehaviour
         //Debug.Log("Visible entities: " + visibleEntities.Count);
         Vector3 centroid = getCentroidOfEntities(visibleEntities);
         Debug.DrawLine(centroid, centroid + Vector3.up * 10);
-        Vector3 cohesionVector = (centroid - gameObject.transform.position).normalized;
+        Vector3 cohesionVector = (centroid - gameObject.transform.position);
         Vector3 separationVector = getSeperationCoefficient(visibleEntities);
         Vector3 alignmentVector = getAlignmentCoefficient(visibleEntities);
 
         Vector3 result = CohesionFactor * cohesionVector + SeparationFactor * separationVector +
                          AlignmentFactor * alignmentVector;
-        FlockingVector = result.normalized;
+        FlockingVector = result;
     }
 
     private Vector3 getCentroidOfEntities(List<GameObject> objs)
@@ -55,7 +55,7 @@ public class FlockingBaseComponent : MonoBehaviour
             pushFactor += diff;
         }
 
-        return pushFactor.normalized;
+        return pushFactor / objs.Count;
     }
 
     private Vector3 getAlignmentCoefficient(List<GameObject> objs)
@@ -68,7 +68,7 @@ public class FlockingBaseComponent : MonoBehaviour
             alignmentFactor += alignment;
         }
 
-        return alignmentFactor.normalized;
+        return alignmentFactor / objs.Count();
     }
 
 }
