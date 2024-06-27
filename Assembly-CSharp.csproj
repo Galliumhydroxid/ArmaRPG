@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\State\State.cs" />
+    <Compile Include="Assets\Flocking\HunterParameters.cs" />
     <Compile Include="Assets\FollowPlayer.cs" />
     <Compile Include="Assets\HerdBehaviour.cs" />
     <Compile Include="Assets\State\StateMachine.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Assets\FlockingBaseComponent.cs" />
     <Compile Include="Assets\Flocking\Flock.cs" />
     <Compile Include="Assets\Navigation\NavigateGoalParameters.cs" />
+    <Compile Include="Assets\Flocking\Seek.cs" />
     <Compile Include="Assets\HerdSpawner.cs" />
     <Compile Include="Assets\VisibilityManager.cs" />
     <Compile Include="Assets\Flocking\Wander.cs" />

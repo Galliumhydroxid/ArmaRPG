@@ -15,7 +15,7 @@ namespace Flocking
 
         public override void onEnterState()
         {
-            this.latstKnowPosition = gameObject.GetComponent<AiParameters>().lastKnownPosition;
+            this.latstKnowPosition = gameObject.GetComponent<HunterParameters>().lastKnownPosition;
         }
 
         public override void onExitState()

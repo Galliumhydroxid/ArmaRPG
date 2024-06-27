@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Flocking
 {
-    public class AiParameters : MonoBehaviour
+    public class HunterParameters : MonoBehaviour
 
     {
         public  Transform lastKnownPosition;
