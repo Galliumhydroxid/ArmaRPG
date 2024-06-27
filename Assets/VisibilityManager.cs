@@ -22,9 +22,11 @@ public class VisibilityManager : MonoBehaviour
         {
             if (obj.CompareTag(tag))
             {
-                ret.Append(obj);
+                ret.Add(obj);
             }
         }
+        
+        Debug.Log("Visible Objects by Tag: " + ret.Count);
 
         return ret;
     }
@@ -39,11 +41,12 @@ public class VisibilityManager : MonoBehaviour
     {
         var entititesInRadius = entitiesInRadius();
         List<GameObject> visibleEntities = new List<GameObject>();
+        //Debug.Log("Fetched " + entititesInRadius.Count() + " entitites in radius");
         foreach (var entity in entititesInRadius)
         {
-            if (isVisible(entity))
+            if (isVisible(entity) && entity != gameObject)
             {
-                visibleEntities.Append(entity);
+                visibleEntities.Add(entity);
             }
         }
 
@@ -56,7 +59,8 @@ public class VisibilityManager : MonoBehaviour
         var targets = Physics.OverlapSphere(gameObject.transform.position, visibilityRadius);
         foreach (var collider in targets)
         {
-            objectsInRadius.Append(collider.gameObject);
+            //Debug.Log("Adding gameObject to list");
+            objectsInRadius.Add(collider.gameObject);
         }
 
         return objectsInRadius;
@@ -64,7 +68,7 @@ public class VisibilityManager : MonoBehaviour
 
     private bool isVisible(GameObject obj)
     {
-        return isInVisCone(obj) && !isOccluded(obj);
+        return isInVisCone(obj);// && !isOccluded(obj);
     }
 
     private bool isOccluded(GameObject obj)

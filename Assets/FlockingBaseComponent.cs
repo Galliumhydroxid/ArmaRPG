@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class FlockingBaseComponent : MonoBehaviour
 {
     public Vector3 FlockingVector;
-    public float FlockingWeight = 1.0f;
+    public VisibilityManager visManager;
     public string HerdTag;
     public float CohesionFactor = 1.0f;
     public float SeparationFactor = 1.0f;
@@ -20,15 +20,17 @@ public class FlockingBaseComponent : MonoBehaviour
 
     void Update()
     {
-        var visibleEntities = GetComponent<VisibilityManager>().getVisibleObjectsByTag(HerdTag);
+        var visibleEntities = visManager.getVisibleObjectsByTag(HerdTag);
+        //Debug.Log("Visible entities: " + visibleEntities.Count);
         Vector3 centroid = getCentroidOfEntities(visibleEntities);
+        Debug.DrawLine(centroid, centroid + Vector3.up * 10);
         Vector3 cohesionVector = (centroid - gameObject.transform.position).normalized;
         Vector3 separationVector = getSeperationCoefficient(visibleEntities);
         Vector3 alignmentVector = getAlignmentCoefficient(visibleEntities);
 
         Vector3 result = CohesionFactor * cohesionVector + SeparationFactor * separationVector +
                          AlignmentFactor * alignmentVector;
-        FlockingVector = result;
+        FlockingVector = result.normalized;
     }
 
     private Vector3 getCentroidOfEntities(List<GameObject> objs)
