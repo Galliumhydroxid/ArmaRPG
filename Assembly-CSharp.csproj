@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\State\State.cs" />
+    <Compile Include="Assets\Flocking\Flee.cs" />
     <Compile Include="Assets\Flocking\HunterParameters.cs" />
     <Compile Include="Assets\FollowPlayer.cs" />
     <Compile Include="Assets\HerdBehaviour.cs" />
