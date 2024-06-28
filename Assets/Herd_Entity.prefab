@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 647083805376022631}
   - component: {fileID: 27704398265332629}
   - component: {fileID: 4489341444543607900}
-  - component: {fileID: -3840212691874538546}
   - component: {fileID: 7723148647713631777}
   - component: {fileID: 5179912178277687043}
   - component: {fileID: 7625945797024059879}
+  - component: {fileID: -9038101236369419437}
+  - component: {fileID: -2869646916190081193}
   m_Layer: 6
   m_Name: Herd_Entity
   m_TagString: HERD
@@ -109,20 +110,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-3840212691874538546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000264035709856529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c206c00864cd4ed1bd3c3cc94f5a5f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseComponent: {fileID: 7723148647713631777}
-  agent: {fileID: 7625945797024059879}
 --- !u!114 &7723148647713631777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visibilityRadius: 10
-  visibilityConeAngle: 90
+  visibilityConeAngle: 180
 --- !u!195 &7625945797024059879
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -177,3 +164,34 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-9038101236369419437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000264035709856529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76579cc5c83a43db90e00039ed290ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initalState: {fileID: -2869646916190081193}
+--- !u!114 &-2869646916190081193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000264035709856529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21bc9c77fd9e4af182af91cc42186192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateMachine: {fileID: -9038101236369419437}
+  visManager: {fileID: 5179912178277687043}
+  flockComp: {fileID: 7723148647713631777}
+  navAgent: {fileID: 7625945797024059879}
+  flockWeight: 1
+  fleeWeight: 0.5
