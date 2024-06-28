@@ -12,7 +12,7 @@ public class Wander : State.State
     private float startedTime;
     private VisibilityManager visManager;
     public float epsilon = 5f;
-    public float fleePercentageThreshold = 0.2f;
+    public float fleePercentageThreshold = 0.5f;
     
     public override void onEnterState()
     {
