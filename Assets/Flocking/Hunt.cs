@@ -48,13 +48,10 @@ namespace Flocking
 
             GameObject nearestCandidate = null;
             
-            foreach (GameObject obj in gameObjects)
+            foreach (GameObject obj in visibleEntities)
             {
-                float angle = Vector3.Angle(obj.transform.forward, gameObject.transform.forward);
-                if (angle < visConeAngle)
-                {
                     nearestCandidate = closer(obj, nearestCandidate);
-                }
+                
             }
 
             if (nearestCandidate == null)
@@ -79,7 +76,7 @@ namespace Flocking
 
         private void changeStateToSearch()
         {
-            // TODO
+            
         }
 
         private void moveTowardsNPC(GameObject obj)
