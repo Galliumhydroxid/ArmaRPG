@@ -18,7 +18,7 @@ namespace Flocking
         public override void onEnterState()
         {
             this._herdTag = gameObject.GetComponent<HunterParameters>().HerdTag;
-            this._visManager = gameObject.GetComponent<HunterParameters>().visManager;
+            this._visManager = gameObject.GetComponent<VisibilityManager>();
             this.latstKnowPosition = gameObject.GetComponent<HunterParameters>().lastKnownPosition;
 
 
