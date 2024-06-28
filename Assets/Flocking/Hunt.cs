@@ -25,6 +25,7 @@ namespace Flocking
 
         public override void onExitState()
         {
+            Debug.Log(latstKnowPosition);
             gameObject.GetComponent<HunterParameters>().lastKnownPosition = this.latstKnowPosition;
 
         }
@@ -33,18 +34,17 @@ namespace Flocking
         {
             // TODO: find nearest npcs
             var nextNPC = nextNPCVisible();
-            if (nextNPC == null)
+            if (!nextNPC)
             {
                 changeStateToSearch();
                 return;
-
-
             }
-            Debug.Log(nextNPC);
+           // Debug.Log(nextNPC);
             moveTowardsNPC(nextNPC);
             
          
             latstKnowPosition = nextNPC.transform.position;
+            
             Debug.DrawLine(this.transform.position , latstKnowPosition, Color.yellow);
 
 

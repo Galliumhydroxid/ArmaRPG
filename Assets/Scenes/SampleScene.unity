@@ -1372,17 +1372,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hunter
       objectReference: {fileID: 0}
+    - target: {fileID: 3153669183145625254, guid: 8173ed6861c4b374dbbdd27f336e93b2, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720528134738802465, guid: 8173ed6861c4b374dbbdd27f336e93b2, type: 3}
+      propertyPath: m_Speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8611305999021399850, guid: 8173ed6861c4b374dbbdd27f336e93b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 557.81
+      value: 561.36
       objectReference: {fileID: 0}
     - target: {fileID: 8611305999021399850, guid: 8173ed6861c4b374dbbdd27f336e93b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.67
+      value: 0.48
       objectReference: {fileID: 0}
     - target: {fileID: 8611305999021399850, guid: 8173ed6861c4b374dbbdd27f336e93b2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 527.46
+      value: 527.01
       objectReference: {fileID: 0}
     - target: {fileID: 8611305999021399850, guid: 8173ed6861c4b374dbbdd27f336e93b2, type: 3}
       propertyPath: m_LocalRotation.w
