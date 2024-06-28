@@ -8,7 +8,7 @@ namespace Flocking
     public class Seek : State.State
     {
         public NavMeshAgent mNavMeshAgent;   
-        public Transform latstKnowPosition;
+        public Vector3 latstKnowPosition;
         public float searchTimer;
         private VisibilityManager _visManager;
         public bool reached;

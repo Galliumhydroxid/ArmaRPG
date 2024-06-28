@@ -5,7 +5,7 @@ namespace Flocking
     public class HunterParameters : MonoBehaviour
 
     {
-        public  Transform lastKnownPosition;
+        public  Vector3 lastKnownPosition;
         public string HerdTag;
         public VisibilityManager visManager;
     }

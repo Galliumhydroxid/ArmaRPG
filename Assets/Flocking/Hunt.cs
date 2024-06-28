@@ -11,12 +11,16 @@ namespace Flocking
     {
         private VisibilityManager _visManager;
         private string _herdTag;
+        public Vector3 latstKnowPosition;
+
 
 
         public override void onEnterState()
         {
             this._herdTag = gameObject.GetComponent<HunterParameters>().HerdTag;
             this._visManager = gameObject.GetComponent<HunterParameters>().visManager;
+            this.latstKnowPosition = gameObject.GetComponent<HunterParameters>().lastKnownPosition;
+
 
         }
 
@@ -30,6 +34,9 @@ namespace Flocking
             // TODO: find nearest npcs
             var nextNPC = nextNPCVisible();
             moveTowardsNPC(nextNPC);
+            latstKnowPosition = nextNPC.transform.position;
+
+
         }
 
         GameObject nextNPCVisible()
