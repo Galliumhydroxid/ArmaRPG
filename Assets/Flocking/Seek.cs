@@ -33,6 +33,8 @@ namespace Flocking
         public override void update()
         {
             //if target is spotted change state to hunt
+            Debug.DrawLine(this.transform.position , latstKnowPosition, Color.green);
+
             List<GameObject> gameObjects = new List<GameObject>();
             var visibleEntities = _visManager.getVisibleObjectsByTag(_herdTag);
             if (visibleEntities.Count >= 0)
