@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 9140315755709260777}
   - component: {fileID: 6279852789233738367}
   - component: {fileID: 4720528134738802465}
+  - component: {fileID: 5436418295099564388}
+  - component: {fileID: -278087134693595387}
   m_Layer: 0
   m_Name: Hunter
   m_TagString: HUNTER
@@ -102,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 1412899831836153917}
-  latstKnowPosition: {x: 0, y: 0, z: 0}
+  latestKnowPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &8001300394172355497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,3 +190,35 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5436418295099564388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3153669183145625254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fa2d31753d4c3a93cbf6195c5cbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killRange: 1
+  killTag: HERD
+--- !u!114 &-278087134693595387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3153669183145625254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85bd4b8f82d24f92b401fc5250c5e227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlockingVector: {x: 0, y: 0, z: 0}
+  visManager: {fileID: 6279852789233738367}
+  HerdTag: HUNTER
+  CohesionFactor: 1
+  SeparationFactor: 1
+  AlignmentFactor: 1
