@@ -33,6 +33,7 @@ namespace Flocking
         {
             // TODO: find nearest npcs
             var nextNPC = nextNPCVisible();
+            Debug.Log(nextNPC);
             moveTowardsNPC(nextNPC);
             latstKnowPosition = nextNPC.transform.position;
 
@@ -57,7 +58,7 @@ namespace Flocking
             
             foreach (GameObject obj in visibleEntities)
             {
-                    nearestCandidate = closer(obj, nearestCandidate);
+                    nearestCandidate = closer(nearestCandidate, obj );
                 
             }
 
