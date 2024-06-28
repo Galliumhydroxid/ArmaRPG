@@ -34,7 +34,7 @@ namespace State
 
         public void registerStateMachine(StateMachine parent)
         {
-            Debug.Log("Registering State Machine");
+            //Debug.Log("Registering State Machine");
             this.stateMachine = parent;
         }
     }

@@ -39,7 +39,7 @@ public class NavigateGoalState : State.State
         float distToGoal = diff.magnitude;
         if (distToGoal < epsilon)
         {
-            Debug.Log("Distance threshold reached: switching state");
+            //Debug.Log("Distance threshold reached: switching state");
             // set goal to current pos
             agent.destination = agent.transform.position;
             changeState();
