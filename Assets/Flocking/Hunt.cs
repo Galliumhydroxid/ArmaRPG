@@ -19,13 +19,13 @@ namespace Flocking
         {
             this._herdTag = gameObject.GetComponent<HunterParameters>().HerdTag;
             this._visManager = gameObject.GetComponent<VisibilityManager>();
-            this.latstKnowPosition = gameObject.GetComponent<HunterParameters>().lastKnownPosition;
 
 
         }
 
         public override void onExitState()
         {
+            gameObject.GetComponent<HunterParameters>().lastKnownPosition = this.latstKnowPosition;
 
         }
 
@@ -33,9 +33,19 @@ namespace Flocking
         {
             // TODO: find nearest npcs
             var nextNPC = nextNPCVisible();
+            if (nextNPC == null)
+            {
+                changeStateToSearch();
+                return;
+
+
+            }
             Debug.Log(nextNPC);
             moveTowardsNPC(nextNPC);
+            
+         
             latstKnowPosition = nextNPC.transform.position;
+            Debug.DrawLine(this.transform.position , latstKnowPosition, Color.yellow);
 
 
         }
@@ -84,11 +94,13 @@ namespace Flocking
 
         private void changeStateToSearch()
         {
+            stateMachine.changeState<Seek>();
             
         }
 
         private void moveTowardsNPC(GameObject obj)
         {
+            if (obj!= null)
             gameObject.GetComponent<NavMeshAgent>().destination = obj.transform.position;
         }
     }
