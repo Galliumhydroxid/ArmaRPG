@@ -32,18 +32,21 @@ public class Wander : State.State
         if ((Time.time - startedTime) > timeout_s)
         {
             nextState();
+            return;
         }
 
         List<GameObject> hunters = visManager.getVisibleObjectsByTag("HUNTER");
         if (hunters.Count > 0)
         {
             changeToFlee();
+            return;
         }
 
         float ratio = countFleeRatio(visManager.getVisibleObjectsByTag("HERD"));
         if (ratio >= fleePercentageThreshold)
         {
             changeToFlee();
+            return;
         }
 
         float dist = (gameObject.transform.position - navigationTarget).magnitude;
@@ -51,6 +54,7 @@ public class Wander : State.State
         if (dist < epsilon)
         {
             nextState();
+            return;
         }
     }
 

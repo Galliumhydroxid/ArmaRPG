@@ -23,6 +23,7 @@ public class VisibilityManager : MonoBehaviour
             if (obj.CompareTag(tag))
             {
                 ret.Add(obj);
+                Debug.DrawLine(gameObject.transform.position, obj.transform.position, Color.green);
             }
         }
         
