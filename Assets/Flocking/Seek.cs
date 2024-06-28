@@ -19,7 +19,7 @@ namespace Flocking
         {
             this.latstKnowPosition = gameObject.GetComponent<HunterParameters>().lastKnownPosition;
             this._herdTag = gameObject.GetComponent<HunterParameters>().HerdTag;
-            this._visManager = gameObject.GetComponent<HunterParameters>().visManager;
+            this._visManager = gameObject.GetComponent<VisibilityManager>();
             reached = false;
                 
             // go to last know position
