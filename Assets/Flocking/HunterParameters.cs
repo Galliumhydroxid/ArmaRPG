@@ -6,5 +6,7 @@ namespace Flocking
 
     {
         public  Transform lastKnownPosition;
+        public string HerdTag;
+        public VisibilityManager visManager;
     }
 }

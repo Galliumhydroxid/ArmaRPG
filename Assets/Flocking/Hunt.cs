@@ -9,11 +9,14 @@ namespace Flocking
 {
     public class Hunt : State.State
     {
-        public float visRange = 5;
-        public float visConeAngle = 45;
+        private VisibilityManager _visManager;
+        private string _herdTag;
+
 
         public override void onEnterState()
         {
+            this._herdTag = gameObject.GetComponent<HunterParameters>().HerdTag;
+            this._visManager = gameObject.GetComponent<HunterParameters>().visManager;
 
         }
 
@@ -31,7 +34,7 @@ namespace Flocking
 
         GameObject nextNPCVisible()
         {
-            List<GameObject> gameObjects = new List<GameObject>();
+          /*  List<GameObject> gameObjects = new List<GameObject>();
             var targets = Physics.OverlapSphere(gameObject.transform.position, visRange);
             foreach (var collider in targets)
             {
@@ -40,6 +43,8 @@ namespace Flocking
                     gameObjects.Append(collider.gameObject);
                 }
             }
+        */
+          var visibleEntities = _visManager.getVisibleObjectsByTag(_herdTag);
 
             GameObject nearestCandidate = null;
             

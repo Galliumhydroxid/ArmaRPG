@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wander : MonoBehaviour
+public class Wander : State.State
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void onEnterState()
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void onExitState()
     {
-        
+        throw new System.NotImplementedException();
+    }
+
+    public override void update()
+    {
+        throw new System.NotImplementedException();
     }
 }
