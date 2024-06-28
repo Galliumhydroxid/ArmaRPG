@@ -4,6 +4,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 namespace Flocking
 {
@@ -11,7 +12,7 @@ namespace Flocking
     {
         private VisibilityManager _visManager;
         private string _herdTag;
-        public Vector3 latstKnowPosition;
+        [FormerlySerializedAs("latestKnowPosition")] public Vector3 latestKnowPosition;
 
 
 
@@ -19,7 +20,7 @@ namespace Flocking
         {
             this._herdTag = gameObject.GetComponent<HunterParameters>().HerdTag;
             this._visManager = gameObject.GetComponent<VisibilityManager>();
-            this.latstKnowPosition = gameObject.GetComponent<HunterParameters>().lastKnownPosition;
+            this.latestKnowPosition = gameObject.GetComponent<HunterParameters>().lastKnownPosition;
 
 
         }
@@ -35,7 +36,7 @@ namespace Flocking
             var nextNPC = nextNPCVisible();
             Debug.Log(nextNPC);
             moveTowardsNPC(nextNPC);
-            latstKnowPosition = nextNPC.transform.position;
+            latestKnowPosition = nextNPC.transform.position;
 
 
         }
@@ -89,7 +90,8 @@ namespace Flocking
 
         private void moveTowardsNPC(GameObject obj)
         {
-            gameObject.GetComponent<NavMeshAgent>().destination = obj.transform.position;
+            Vector3 flockingVec = GetComponent<FlockingBaseComponent>().FlockingVector;
+            gameObject.GetComponent<NavMeshAgent>().destination = obj.transform.position + 2 * flockingVec;
         }
     }
 }

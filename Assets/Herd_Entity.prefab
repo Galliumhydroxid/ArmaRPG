@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7625945797024059879}
   - component: {fileID: -9038101236369419437}
   - component: {fileID: -2765526195177599505}
+  - component: {fileID: -2121463736686575100}
   m_Layer: 6
   m_Name: Herd_Entity
   m_TagString: HERD
@@ -176,6 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76579cc5c83a43db90e00039ed290ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: {fileID: 0}
   initalState: {fileID: -2765526195177599505}
 --- !u!114 &-2765526195177599505
 MonoBehaviour:
@@ -194,3 +196,16 @@ MonoBehaviour:
   distMod: 5
   timeout_s: 5
   epsilon: 1
+  fleePercentageThreshold: 0.2
+--- !u!114 &-2121463736686575100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000264035709856529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39d0a7b348da4eaca1cdd6828423151d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
