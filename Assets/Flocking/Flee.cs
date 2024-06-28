@@ -14,7 +14,7 @@ public class FleeState : State.State
     public FlockingBaseComponent flockComp;
     public NavMeshAgent navAgent;
     public const float timeout_s = 0.5f;
-    public float flockWeight = 1.0f;
+    public float flockWeight = 2.0f;
     public float fleeWeight = 1.0f;
     private float timeCounter;
     
@@ -24,6 +24,10 @@ public class FleeState : State.State
     public override void onEnterState()
     {
         timeCounter = Time.time;
+        visManager = GetComponent<VisibilityManager>();
+        flockComp = GetComponent<FlockingBaseComponent>();
+        navAgent = GetComponent<NavMeshAgent>();
+        
     }
     
     public override void onExitState()
@@ -41,7 +45,8 @@ public class FleeState : State.State
         {
             if ((Time.time - timeCounter) > timeout_s)
             {
-                // TODO: CHANGE TO WANDER
+                stateMachine.changeState<Wander>();
+                return;
             }
 
             navAgent.destination = gameObject.transform.position + flockComp.FlockingVector;

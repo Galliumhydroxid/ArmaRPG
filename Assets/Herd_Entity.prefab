@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5179912178277687043}
   - component: {fileID: 7625945797024059879}
   - component: {fileID: -9038101236369419437}
-  - component: {fileID: -2869646916190081193}
+  - component: {fileID: -2765526195177599505}
   m_Layer: 6
   m_Name: Herd_Entity
   m_TagString: HERD
@@ -176,8 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76579cc5c83a43db90e00039ed290ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initalState: {fileID: -2869646916190081193}
---- !u!114 &-2869646916190081193
+  initalState: {fileID: -2765526195177599505}
+--- !u!114 &-2765526195177599505
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,12 +186,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000264035709856529}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21bc9c77fd9e4af182af91cc42186192, type: 3}
+  m_Script: {fileID: 11500000, guid: 550125ea4a96a98b6af533a77d2d7def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateMachine: {fileID: -9038101236369419437}
-  visManager: {fileID: 5179912178277687043}
-  flockComp: {fileID: 7723148647713631777}
-  navAgent: {fileID: 7625945797024059879}
-  flockWeight: 1
-  fleeWeight: 0.5
+  stateMachine: {fileID: 0}
+  navigationTarget: {x: 0, y: 0, z: 0}
+  distMod: 5
+  timeout_s: 5
+  epsilon: 1

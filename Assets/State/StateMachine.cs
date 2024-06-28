@@ -10,7 +10,7 @@ namespace State
         // atomic
         private bool _running;
 
-        private State _currentState;
+        public State currentState;
         [SerializeField]
         public State initalState;
 
@@ -22,8 +22,8 @@ namespace State
         /// </param>
         public void Start()
         {
-            _currentState = initalState;
-            _currentState.registerStateMachine(this);
+            currentState = initalState;
+            currentState.registerStateMachine(this);
         }
 
         /// <summary>
@@ -31,15 +31,15 @@ namespace State
         /// </summary>
         public void Stop()
         {
-            Destroy(gameObject.GetComponent(_currentState.GetType()));
+            Destroy(gameObject.GetComponent(currentState.GetType()));
         }
 
         public void changeState<nextStateType>() where nextStateType : State
         {
-            _currentState?.onExitState();
-            DestroyImmediate(gameObject.GetComponent(_currentState.GetType()));
+            currentState?.onExitState();
+            DestroyImmediate(gameObject.GetComponent(currentState.GetType()));
             gameObject.AddComponent(typeof(nextStateType));
-            _currentState = gameObject.GetComponent<nextStateType>();
+            currentState = gameObject.GetComponent<nextStateType>();
             gameObject.GetComponent<nextStateType>().registerStateMachine(this);
 
         }
