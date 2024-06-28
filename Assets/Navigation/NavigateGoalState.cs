@@ -21,7 +21,7 @@ public class NavigateGoalState : State.State
     {
         this.goals = gameObject.GetComponent<NavigateGoalParameters>().goals;
         this.agent = gameObject.GetComponent<NavigateGoalParameters>().agent;
-        Debug.Log("Entering state, setting navigation goal");
+        //Debug.Log("Entering state, setting navigation goal");
         agent.destination = goals[0].position; 
     }
     

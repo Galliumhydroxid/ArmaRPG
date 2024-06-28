@@ -21,6 +21,11 @@ public class FlockingBaseComponent : MonoBehaviour
     void Update()
     {
         var visibleEntities = visManager.getVisibleObjectsByTag(HerdTag);
+        if (visibleEntities.Count == 0)
+        {
+            FlockingVector = Vector3.zero;
+            return;
+        }
         //Debug.Log("Visible entities: " + visibleEntities.Count);
         Vector3 centroid = getCentroidOfEntities(visibleEntities);
         Debug.DrawLine(centroid, centroid + Vector3.up * 10);
