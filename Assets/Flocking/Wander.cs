@@ -6,20 +6,24 @@ using UnityEngine.AI;
 
 public class Wander : State.State
 {
-    public Vector3 navigationTarget;
-    public float distMod = 20;
+    public Vector3 navigationTargetRel;
+    public float distMod = 0.3f;
     public float timeout_s = 5;
     private float startedTime;
     private VisibilityManager visManager;
-    public float epsilon = 5f;
-    public float fleePercentageThreshold = 0.5f;
+    private FlockingBaseComponent flockingBaseComponent;
+    private NavMeshAgent agent;
+    public float epsilon = 0.1f;
+    public float fleePercentageThreshold = 0.4f;
     
     public override void onEnterState()
     {
-        navigationTarget = gameObject.transform.position + Random.insideUnitSphere * distMod;
-        GetComponent<NavMeshAgent>().destination = navigationTarget;
+        navigationTargetRel = Random.insideUnitSphere * distMod;
+        agent = GetComponent<NavMeshAgent>();
+        agent.destination = gameObject.transform.position + navigationTargetRel;
         startedTime = Time.time;
         visManager = GetComponent<VisibilityManager>();
+        flockingBaseComponent = GetComponent<FlockingBaseComponent>();
     }
 
     public override void onExitState()
@@ -49,15 +53,24 @@ public class Wander : State.State
             return;
         }
 
-        float dist = (gameObject.transform.position - navigationTarget).magnitude;
+        float dist = (gameObject.transform.position - agent.destination).magnitude;
 
-        if (dist < epsilon)
+        if (dist <= epsilon)
         {
             nextState();
             return;
         }
+
+        adjustNavTarget();
     }
 
+
+    void adjustNavTarget()
+    {
+        agent.destination = gameObject.transform.position + navigationTargetRel + flockingBaseComponent.FlockingVector;
+    }
+    
+    
     float countFleeRatio(List<GameObject> objs)
     {
         float fleeCount = 0;

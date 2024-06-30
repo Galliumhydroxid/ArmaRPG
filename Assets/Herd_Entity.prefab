@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 0}
-  navigationTarget: {x: 0, y: 0, z: 0}
+  navigationTargetRel: {x: 0, y: 0, z: 0}
   distMod: 5
   timeout_s: 5
   epsilon: 1
