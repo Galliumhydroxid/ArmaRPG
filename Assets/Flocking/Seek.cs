@@ -1,13 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace Flocking
 {
     public class Seek : State.State
     {
-        public NavMeshAgent mNavMeshAgent;   
+        public NavMeshAgent mNavMeshAgent;
         public Vector3 latstKnowPosition;
         public float searchTimer;
         private VisibilityManager _visManager;
@@ -17,7 +20,10 @@ namespace Flocking
 
         public override void onEnterState()
         {
+            
+            mNavMeshAgent = gameObject.GetComponent<NavMeshAgent>();
             this.latstKnowPosition = gameObject.GetComponent<HunterParameters>().lastKnownPosition;
+            
             this._herdTag = gameObject.GetComponent<HunterParameters>().HerdTag;
             this._visManager = gameObject.GetComponent<VisibilityManager>();
             reached = false;
@@ -37,8 +43,11 @@ namespace Flocking
 
             List<GameObject> gameObjects = new List<GameObject>();
             var visibleEntities = _visManager.getVisibleObjectsByTag(_herdTag);
-            if (visibleEntities.Count >= 0)
+            //Debug.Log(visibleEntities.Count);
+            //Debug.Log(string.Join(Environment.NewLine, visibleEntities)); 
+            if (visibleEntities.Count > 0)
             {
+              //  Debug.Log("ep");
                 stateMachine.changeState<Hunt>();
             }
 
