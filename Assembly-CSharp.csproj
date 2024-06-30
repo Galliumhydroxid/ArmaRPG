@@ -59,6 +59,7 @@
     <Compile Include="Assets\FlockingBaseComponent.cs" />
     <Compile Include="Assets\Flocking\Flock.cs" />
     <Compile Include="Assets\Navigation\NavigateGoalParameters.cs" />
+    <Compile Include="Assets\HerdInitializer.cs" />
     <Compile Include="Assets\Flocking\Seek.cs" />
     <Compile Include="Assets\HerdSpawner.cs" />
     <Compile Include="Assets\VisibilityManager.cs" />
