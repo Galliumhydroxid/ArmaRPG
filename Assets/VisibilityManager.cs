@@ -90,7 +90,8 @@ public class VisibilityManager : MonoBehaviour
 
     private bool isInVisCone(GameObject obj)
     {
-        float angle = Vector3.Angle(obj.transform.forward, gameObject.transform.forward);
+        Vector3 diff = obj.transform.position - gameObject.transform.position;
+        float angle = Vector3.Angle(diff, gameObject.transform.forward);
         return angle <= visibilityConeAngle;
     }
         
