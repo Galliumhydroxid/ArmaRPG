@@ -50,6 +50,7 @@ namespace Flocking
             if (visibleEntities.Count > 0)
             {
                 stateMachine.changeState<Hunt>();
+                return;
             }
             
 
@@ -60,7 +61,7 @@ namespace Flocking
             else
             {
                 searchTimer += Time.deltaTime; 
-                moveTimer = Time.deltaTime;
+                moveTimer += Time.deltaTime;
                 if (moveTimer > Random.Range(3, 5))
                 {
                     moveTowardsPosition(transform.position + (Random.insideUnitSphere * 5 ));
@@ -70,7 +71,7 @@ namespace Flocking
                 if (searchTimer > 10)
                 {
                   //  Debug.Log("ep");
-                    stateMachine.changeState<Wander>();
+                    stateMachine.changeState<Patrol>();
                 }
                 
             }
@@ -102,7 +103,7 @@ namespace Flocking
         private void moveTowardsPosition(Vector3 obj)
         
         {
-            gameObject.GetComponent<NavMeshAgent>().destination = obj;
+            mNavMeshAgent.destination = obj;
         }
     }
 }

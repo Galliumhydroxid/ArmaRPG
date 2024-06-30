@@ -45,6 +45,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.30f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Flocking\Patrol.cs" />
     <Compile Include="Assets\State\State.cs" />
     <Compile Include="Assets\Flocking\Flee.cs" />
     <Compile Include="Assets\Flocking\HunterParameters.cs" />
