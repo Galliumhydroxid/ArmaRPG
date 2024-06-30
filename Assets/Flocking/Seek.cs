@@ -12,6 +12,7 @@ namespace Flocking
     {
         public NavMeshAgent mNavMeshAgent;
         public Vector3 latstKnowPosition;
+        public float moveTimer;
         public float searchTimer;
         private VisibilityManager _visManager;
         public bool reached;
@@ -39,7 +40,8 @@ namespace Flocking
         public override void update()
         {
             //if target is spotted change state to hunt
-            Debug.DrawLine(this.transform.position , latstKnowPosition, Color.green);
+            //Debug.Log(latstKnowPosition);
+            Debug.DrawLine(this.transform.position , latstKnowPosition, Color.magenta);
 
             List<GameObject> gameObjects = new List<GameObject>();
             var visibleEntities = _visManager.getVisibleObjectsByTag(_herdTag);
@@ -47,21 +49,10 @@ namespace Flocking
             //Debug.Log(string.Join(Environment.NewLine, visibleEntities)); 
             if (visibleEntities.Count > 0)
             {
-              //  Debug.Log("ep");
                 stateMachine.changeState<Hunt>();
+                return;
             }
-
-            /*
-              foreach (var collider in visibleEntities)
-              {
-                  if (collider.CompareTag("HERD"))
-                  {
-                      stateMachine.changeState<Hunt>();
-                  }
-              }
-              */
-            // Check if we've reached the last known destination
-
+            
 
             if (!reached)
             {
@@ -69,14 +60,18 @@ namespace Flocking
             }
             else
             {
-                searchTimer += Time.deltaTime;
-                
-                moveTowardsPosition(transform.position + (Random.insideUnitSphere * 5 ));
-                  
+                searchTimer += Time.deltaTime; 
+                moveTimer += Time.deltaTime;
+                if (moveTimer > Random.Range(3, 5))
+                {
+                    moveTowardsPosition(transform.position + (Random.insideUnitSphere * 5 ));
+                    moveTimer = 0;
+                }
                
                 if (searchTimer > 10)
                 {
-                    stateMachine.changeState<Wander>();
+                  //  Debug.Log("ep");
+                    stateMachine.changeState<Patrol>();
                 }
                 
             }
@@ -108,7 +103,7 @@ namespace Flocking
         private void moveTowardsPosition(Vector3 obj)
         
         {
-            gameObject.GetComponent<NavMeshAgent>().destination = obj;
+            mNavMeshAgent.destination = obj;
         }
     }
 }

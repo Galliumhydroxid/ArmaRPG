@@ -27,7 +27,7 @@ public class VisibilityManager : MonoBehaviour
             }
         }
         
-     //   Debug.Log("Visible Objects by Tag: " + ret.Count);
+        Debug.Log("Visible Objects by Tag: " + ret.Count);
 
         return ret;
     }
